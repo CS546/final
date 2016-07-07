@@ -61,7 +61,7 @@ Meetings represent a time when the course meetings during the week
     "site":"Castle Point",
     "building":"K",
     "room":"360",
-    "activity":""LEC"
+    "activity":"LEC"
 }
 ```
 
