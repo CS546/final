@@ -92,5 +92,5 @@ Requirements represent other courses that must be taken before or alongside the 
 | control | string | What type of requirement this is |
 | argument | string | Unknown meaning, but only ever "IP" with a control of "RQM" and paired with another requirement with control of "RQ" |
 | value1 | string | The first course |
-| operator | string | Unknown, not filled in for any data I could find |
+| operator | string | Boolean relating the two courses |
 | value2 | string | THe second course |
