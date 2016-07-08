@@ -93,7 +93,7 @@ Requirements represent other courses that must be taken before or alongside the 
 | argument | string | Unknown meaning, but only ever "IP" with a control of "RQM" and paired with another requirement with control of "RQ" |
 | value1 | string | The first course |
 | operator | string | Boolean relating the two courses |
-| value2 | string | THe second course |
+| value2 | string | The second course |
 #### Students
 The student will be stored so their info can be used by the scheduler to make the experience awesome
 ```json
@@ -117,3 +117,15 @@ The student will be stored so their info can be used by the scheduler to make th
     ]
 }
 ```
+| Name | Type | Description |
+| :---: | :---: | :--- |
+| _id | string | A unique identifier for the student |
+| name | string | The student's name|
+| major | string | The student's major |
+| cwid | string | The student's campus-wide ID |
+| password | string | The student's password |
+| GPA | string | The student's GPA |
+| semester-of-entry | string | The student's semester of entry |
+| d-o-g | string | The student's date of graduation |
+| current-credit-total | string | The student's current credit total |
+| curr-schedule | array | The student's current schedule stored as an array of courses |
