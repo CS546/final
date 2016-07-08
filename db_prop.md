@@ -94,3 +94,21 @@ Requirements represent other courses that must be taken before or alongside the 
 | value1 | string | The first course |
 | operator | string | Boolean relating the two courses |
 | value2 | string | THe second course |
+#### Students
+The student will be stored so their info can be used by the scheduler to make the experience awesome
+```json
+{
+    "_id":"096537ac-de0d-45a5-b4f9-7a3da64381bc",
+    "name":"John Doe",
+    "major":"CS",
+    "cwid":"999999999",
+    "password":"#####",
+    "GPA":"3.0",
+    "semester-of-entry":"2014",
+    "d-o-g":"2018",
+    "current-credit-total":"21",
+    "curr-schedule": [
+        {course1, course2, course3, course4,course5,course6}
+    ]
+}
+```
