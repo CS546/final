@@ -108,7 +108,12 @@ The student will be stored so their info can be used by the scheduler to make th
     "d-o-g":"2018",
     "current-credit-total":"21",
     "curr-schedule": [
-        {"course1", "course2", "course3", "course4", "course5", "course6"}
+        "course1", 
+        "course2", 
+        "course3", 
+        "course4", 
+        "course5", 
+        "course6"
     ]
 }
 ```
