@@ -12,8 +12,8 @@ The course collection will store information on all the courses, parsed from the
     "dept":"CS",
     "num":"546",
     "call":"10100",
-    "min-credits":"3",
-    "max-credits":"3",
+    "min_credits":"3",
+    "max_credits":"3",
     "max_enrollment":"30",
     "curr_enrollment":"21",
     "status":"O",
@@ -32,14 +32,14 @@ The course collection will store information on all the courses, parsed from the
 ```
 
 | Name | Type| Desciption |
-| :---: | :---: | :--- | 
+| :---: | :---: | :--- |
 | _id | string | A unique identifier for the course |
 | name | string | The name of the course |
 | dept | string | The department for the course
 | num | string | The course number |
 | call | string | The call number for the course |
-| min-credits | string | The minimum credits for the course | 
-| max-credits | string | The maximum credits for the course |
+| min_credits | string | The minimum credits for the course |
+| max_credits | string | The maximum credits for the course |
 | max_enrollment | string | The maximum allowabl enrollment in the course |
 | curr_enrollment | string | The amount of studetns currently enrolled in the course |
 | status | string | The course status - open(O), closed(C), or cancelled(X) |
@@ -104,15 +104,15 @@ The student will be stored so their info can be used by the scheduler to make th
     "cwid":"999999999",
     "password":"#####",
     "GPA":"3.0",
-    "semester-of-entry":"2014",
-    "d-o-g":"2018",
-    "current-credit-total":"21",
-    "curr-schedule": [
-        "course1", 
-        "course2", 
-        "course3", 
-        "course4", 
-        "course5", 
+    "semester_of_entry":"2014",
+    "d_o_g":"2018",
+    "current_credit_total":"21",
+    "curr_schedule": [
+        "course1",
+        "course2",
+        "course3",
+        "course4",
+        "course5",
         "course6"
     ]
 }
@@ -125,7 +125,7 @@ The student will be stored so their info can be used by the scheduler to make th
 | cwid | string | The student's campus-wide ID |
 | password | string | The student's password |
 | GPA | string | The student's GPA |
-| semester-of-entry | string | The student's semester of entry |
-| d-o-g | string | The student's date of graduation |
-| current-credit-total | string | The student's current credit total |
-| curr-schedule | array | The student's current schedule stored as an array of courses |
+| semester_of_entry | string | The student's semester of entry |
+| d_o_g | string | The student's date of graduation |
+| current_credit_total | string | The student's current credit total |
+| curr_schedule | array | The student's current schedule stored as an array of course IDs |
