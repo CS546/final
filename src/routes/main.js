@@ -4,8 +4,12 @@ const router = express.Router();
 const data = require("../data");
 
 router.get("/", (req, res) => {
-    res.render("layouts/home", {
-        partial: "jquery-scripts"
+    let myData = data.course_info.getData();
+    myData.then( (data_result) => {
+        res.render("layouts/home", {
+            partial: "jquery-scripts",
+            placeholderData: data_result
+        });
     });
 });
 
