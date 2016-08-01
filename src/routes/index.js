@@ -1,7 +1,11 @@
-const routes = require("./main");
+const home = require("./home");
+const account = require("./account");
+const scheduler = require("./scheduler");
 
 const constructorMethod = (app) => {
-    app.use("/", routes);
+    app.use("/", home);
+    app.use("/account", account);
+    app.use("/scheduler", scheduler);
 
     app.use("*", (req, res) => {
         res.sendStatus(404);
