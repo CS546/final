@@ -15,6 +15,11 @@ router.get("/", (req, res) => {
 });
 
 router.get("/schedule", (req, res) => {
+    /*
+    ex: /schedule?courses=CS 442,CS 392,CS 519,MA 3331
+    Respond with json data of the possible schedules
+    */
+    //parse querystring and create new one on path, changing spaces to "%20"
     courses = req.query.courses;
     let path = '/get_combos?courses='
     for(let i in courses){
@@ -27,13 +32,14 @@ router.get("/schedule", (req, res) => {
             }
         }
     }
+    //use the API I already have for finding schedules
     let schedules = http.request( "http://dev.sitstuff.com" + path , (resp) => {
         let sum_data = '';
         resp.on('data', (data) => {//gets buffers
             sum_data += data.toString('utf8');
         });
         resp.on('end', (data) => {//says when the stream of buffers is done
-            res.send(sum_data);
+            res.json(JSON.parse(sum_data));
         });
     }).end();
 });
