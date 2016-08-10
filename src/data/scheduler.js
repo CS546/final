@@ -92,14 +92,18 @@ let trim_course_section = (fullCourseName) => {
     Return just 'CS 810' or 'E 122' respectively
     */
     return new Promise( function(fulfill, reject){
+        let fulfilled = false;//I don't think this is needed
         for(let i=fullCourseName.length-1; i>=0;  i--){
             let iChar = fullCourseName.charAt(i);
             if((!isNaN(iChar) && (iChar !== " ") )){
                 fulfill(fullCourseName.substring(0,i+1));
+                fulfilled = true;
             }
         }
+        if(!fulfilled){
+            reject(`Course "${fullCourseName}" could not be trimmed`);
+        }
     });
-    reject(`Course "${fullCourseName}" could not be trimmed`);
 }
 
 let pull_courses = (xmlJSON, course_list) => {
