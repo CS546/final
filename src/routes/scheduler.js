@@ -18,6 +18,7 @@ router.get("/schedule", (req, res) => {
     /*
     ex: /schedule?courses=CS 442,CS 392,CS 519,MA 3331
     Respond with json data of the possible schedules
+    add "json=true" to querystring to get just the json back
     */
     //parse querystring and create new one on path, changing spaces to "%20"
     courses = req.query.courses;
@@ -39,16 +40,20 @@ router.get("/schedule", (req, res) => {
             sum_data += data.toString('utf8');
         });
         resp.on('end', (data) => {//says when the stream of buffers is done
-            //res.json(JSON.parse(sum_data));
-            dataJSON = JSON.parse(sum_data);
-            schedules = [];
-            for(let i in dataJSON){
-                schedules.push(dataJSON[i]);
+            let json_bool = req.query.json;
+            if(json_bool){
+                res.json(JSON.parse(sum_data));
+            }else{
+                dataJSON = JSON.parse(sum_data);
+                schedules = [];
+                for(let i in dataJSON){
+                    schedules.push(dataJSON[i]);
+                }
+                res.render("layouts/scheduler", {
+                    partial: "jquery-scripts",
+                    schedules: schedules
+                });
             }
-            res.render("layouts/scheduler", {
-                partial: "jquery-scripts",
-                schedules: schedules
-            });
         });
     }).end();
 });

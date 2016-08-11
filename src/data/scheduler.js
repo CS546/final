@@ -32,6 +32,7 @@ let pretty_print = (json) => {
 }
 
 let explore_data = (xmlJSON) => {
+    //comments are showing an example of the schema of various objects
     let data = xmlJSON["Semester"];
     let sem_info = data["$"];//'$' is an array of tag attributes
     /*      *** sem_info ***
