@@ -9,7 +9,7 @@ router.get("/", (req, res) => {
     myData.then( (data_result) => {
         res.render("layouts/scheduler", {
             partial: "jquery-scripts",
-            placeholderData: data_result
+            data: data_result
         });
     });
 });
@@ -39,7 +39,16 @@ router.get("/schedule", (req, res) => {
             sum_data += data.toString('utf8');
         });
         resp.on('end', (data) => {//says when the stream of buffers is done
-            res.json(JSON.parse(sum_data));
+            //res.json(JSON.parse(sum_data));
+            dataJSON = JSON.parse(sum_data);
+            schedules = [];
+            for(let i in dataJSON){
+                schedules.push(dataJSON[i]);
+            }
+            res.render("layouts/scheduler", {
+                partial: "jquery-scripts",
+                schedules: schedules
+            });
         });
     }).end();
 });
