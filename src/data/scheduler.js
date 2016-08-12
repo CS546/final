@@ -111,8 +111,6 @@ let pull_courses = (xmlJSON, course_list) => {
     /*
     Return an array of all the courses for the given call numbers
     */
-    //I'm apologizing upfront about how the variables are named here
-    //...so many 'courses'
     return new Promise( function(fulfill, reject){
         let courses_big_list = xmlJSON["Semester"]["Course"];
         let pulled_courses = [];//the data pulled from the big xml doc
