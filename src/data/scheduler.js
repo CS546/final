@@ -1,13 +1,3 @@
-/*
-TODO
-  [X] Read file and convert to JSON
-  [ ] Go through JSON course info and pull out data for requested courses
-    add coreqs and prereqs to lists of each, then later we can notify
-    or add them in automatically
-  [ ] Finish scheduling program to work with the downloaded file
-  [ ] Add code to get most recent semester and download the file
-  [ ] Interact with the database to get info
-*/
 const xmlFile = "path/to/file";
 let fs = require('fs');
 let xml2js = require('xml2js');
