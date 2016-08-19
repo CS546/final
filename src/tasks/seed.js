@@ -2,7 +2,8 @@ const dbConnection = require("../config/mongoConnection");
 const data = require("../data/");
 const users = data.courses;
 
-console.log("Seed script not created yet");
+let empty_schedule = {};
+//console.log("Seed script not created yet");
 
 /*
 dbConnection().then(db => {
@@ -29,3 +30,18 @@ dbConnection().then(db => {
     console.error(error);
 });
 */
+
+dbConnnection().then(db => {
+    return db.dropDatabase().then(() => {
+        return dbCOnnection;
+    }).then((db) => {
+        return users.addUser("Test User", "Computer Science", "10393905", "#####", "3.0", "2014", "2018", "21", empty_schedule);
+    }).then(test) => {
+
+    }).then(() => {
+        console.log("done seeding db");
+        db.close();
+    });
+}, (error) => {
+    console.error(error);
+});
