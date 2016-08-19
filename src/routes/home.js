@@ -1,4 +1,5 @@
 const express = require('express');
+const sessionStorage = require('sessionstorage')
 const router = express.Router();
 
 const data = require("../data");
@@ -20,7 +21,9 @@ router.post("/", (req, res) => {
     console.log("password: ", password);
 
     data.course_info.getUserByName(username).then(user => {
-        if(password !== user.password) throw "Passwords don't match"
+        if(password !== user.password) throw "Incorrect Password"
+        console.log("user id: ", user._id);
+        sessionStorage.setItem('user_id', user._id);
         res.render("layouts/account", { partial: "jquery-scripts", user: user });
     }).catch((e) => {
         console.log("error");
@@ -50,6 +53,7 @@ router.post("/signup", (req, res) => {
 
     data.course_info.addUser(username, null, null, password, null, null, null, null, null).then(user => {
         if(password !== password2) throw "Passwords don't match"
+        sessionStorage.setItem('user_id', user._id);
         res.render("layouts/account", { partial: "jquery-scripts", user: user });
     }).catch((e) => {
         res.render("layouts/signup", { partial: "jquery-scripts", error: e });
