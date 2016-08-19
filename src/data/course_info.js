@@ -46,7 +46,7 @@ let exportedMethods = {
     	});
     },
 
-    addUser(name, major, cwid, password, gpa, semester_of_entry, d_o_g, current_credit_total, curr_schedule) {
+    addUser(name, major, cwid, password, gpa, semester_of_entry, d_o_g, current_credit_total, schedules) {
     	return users().then((userCol) => {
     		let newUser = {
     			_id: uuid.v4(),
@@ -58,7 +58,7 @@ let exportedMethods = {
     			semester_of_entry: semester_of_entry,
     			d_o_g: d_o_g,
     			current_credit_total: current_credit_total,
-    			curr_schedule: curr_schedule
+    			schedule: schedules
     		};
 
     		return userCol.insertOne(newUser).then((newUserInfo) => {
@@ -189,8 +189,8 @@ let exportedMethods = {
     		if(updatedUser.curr_credit_total) {
     			updatedUserData.curr_credit_total = updatedUser.curr_credit_total;
     		}
-    		if(updatedUser.curr_schedule) {
-    			updatedUserData.curr_schedule = updatedUser.curr_schedule;
+    		if(updatedUser.schedules) {
+    			updatedUserData.schedules = updatedUser.schedules;
     		}
 
     		let updateCommand = {
@@ -201,6 +201,14 @@ let exportedMethods = {
     			return this.getCourseById(id);
     		});
     	});
+    },
+
+    addSchedule(id, schedule) {
+        return users().then((userCol) => {
+            return userCol.update({_id: id}, {$addToSet: {"schedules": schedule}}).then((result) => {
+                return this.getUserById(id);
+            });
+        });
     }
 }
 
