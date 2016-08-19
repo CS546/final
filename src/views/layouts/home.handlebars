@@ -3,7 +3,7 @@
 <!--<br />-->
 <div class="row">
     <div class="col-sm-6 center-block">
-        <h1 class="text-center space-bottom">Login</h1>
+        <h1 class="login-banner text-center space-bottom">Login</h1>
         <form class="space-bottom">
             <div class="form-group">
                 <label for="username">Username</label>
@@ -12,6 +12,9 @@
             <div class="form-group">
                 <label for="Password">Password</label>
                 <input type="text" class="form-control" id="username" placeholder="Enter your Password" value="{{ password }}">
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-default center-block">Login</button>
             </div>
         </form>
         <a class="text-center" href="/signup">Don't have an account?<br>Sign up here</a>

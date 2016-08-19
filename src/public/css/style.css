@@ -7,6 +7,8 @@
 
 .center-block {float: none !important}
 .text-center {text-align: center; margin:auto;display:block;}
+.text-left {text-align: left;}
+.text-right {text-align: right;}
 .space-bottom {margin-bottom:20px}
 
 /*NAV BAR STYLING*/
@@ -16,7 +18,6 @@
     padding: 0;
     overflow: hidden;
     background-color: #333;
-    margin-bottom: 30px;
 }
 .nav-header {
     float:left;
@@ -46,4 +47,12 @@
 .nav-profile {
     float: right;
     text-decoration: none;
+}
+/*LOGIN PAGE STYLING*/
+.login-banner {
+    padding: 30px;
+}
+/*ACCOUNT PAGE STYLING*/
+.profile-banner {
+    padding: 30px;
 }
