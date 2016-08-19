@@ -1,51 +1,50 @@
 <h1 id="the-heading">Course scheduler</h1>
-<form method="post">
+<form action="/scheduler" method="POST">
     <div class="row">
         <div class="col-sm-6">
             <h2>Courses</h2>
             <div class="form-group col-sm-3">
-                <label for="name">Course 1</label>
-                <input type="text" class="form-control" id="course1" placeholder="AA ###" value="{{ course1 }}">
+                <label for="course1">Course 1</label>
+                <input type="text" class="form-control" id="course1" name="course1" placeholder="AA ###">
             </div>
             <div class="form-group col-sm-3">
-                <label for="name">Course 2</label>
-                <input type="text" class="form-control" id="course2" placeholder="AA ###" value="{{ course2 }}">
+                <label for="course2">Course 2</label>
+                <input type="text" class="form-control" id="course2" name="course2" placeholder="AA ###">
             </div>
             <div class="form-group col-sm-3">
-                <label for="name">Course 3</label>
-                <input type="text" class="form-control" id="course3" placeholder="AA ###" value="{{ course3 }}">
+                <label for="course3">Course 3</label>
+                <input type="text" class="form-control" id="course3" name="course3" placeholder="AA ###">
             </div>
             <div class="form-group col-sm-3">
-                <label for="name">Course 4</label>
-                <input type="text" class="form-control" id="course4" placeholder="AA ###" value="{{ course4 }}">
+                <label for="course4">Course 4</label>
+                <input type="text" class="form-control" id="course4" name="course4" placeholder="AA ###">
             </div>
             <div class="form-group col-sm-3">
-                <label for="name">Course 5</label>
-                <input type="text" class="form-control" id="course5" placeholder="AA ###" value="{{ course5 }}">
+                <label for="course5">Course 5</label>
+                <input type="text" class="form-control" id="course5" name="course5" placeholder="AA ###">
             </div>
             <div class="form-group col-sm-3">
-                <label for="name">Course 6</label>
-                <input type="text" class="form-control" id="course6" placeholder="AA ###" value="{{ course6 }}">
+                <label for="course6">Course 6</label>
+                <input type="text" class="form-control" id="course6" name="course6" placeholder="AA ###">
             </div>
             <div class="form-group col-sm-3">
-                <label for="name">Course 7</label>
-                <input type="text" class="form-control" id="course7" placeholder="AA ###" value="{{ course7 }}">
+                <label for="course7">Course 7</label>
+                <input type="text" class="form-control" id="course7" name="course7" placeholder="AA ###">
             </div>
             <div class="form-group col-sm-3">
-                <label for="name">Course 8</label>
-                <input type="text" class="form-control" id="course8" placeholder="AA ###" value="{{ course8 }}">
+                <label for="course8">Course 8</label>
+                <input type="text" class="form-control" id="course8" name="course8" placeholder="AA ###">
             </div>
         </div>
         <div class="col-sm-6">
             <h2>Information</h2>
             <div class="form-group col-sm-12">
                 <label for="name">Save name:</label>
-                <input type="text" class="form-control" id="name" placeholder="My amazing course schedules">
+                <input type="text" class="form-control" id="save-name" name="save-name" placeholder="My amazing course schedules">
             </div>
         </div>
     </div>
     <div class="row">
         <button type="submit" class="btn btn-primary col-sm-12">Submit</button>
     </div>
-    <div class="panel-body">{{ asJSON schedules }}</div>
 </form>

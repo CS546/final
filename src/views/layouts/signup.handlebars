@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-sm-6 center-block">
         <h1 class="login-banner text-center space-bottom">Sign Up</h1>
-        <form class="space-bottom">
+        <form class="space-bottom" method="post">
             <div class="form-group">
                 <label for="email">Stevens Email</label>
                 <input type="text" class="form-control" id="email" placeholder="Enter your Stevens Email" value="{{ email }}">
@@ -20,6 +20,21 @@
             <div class="form-group">
                 <button type="submit" class="btn btn-default center-block">Sign Up</button>
             </div>
+
+            {{#if error }}
+                <div class="form-group">
+                    <div class="alert alert-danger text-block">
+                        {{ error }}
+                    </div>
+                </div>
+            {{/if}}
+            {{#if user }}
+                <div class="form-group">
+                    <div class="alert alert-success text-block">
+                        The result is: {{ user }}
+                    </div>
+                </div>
+            {{/if}}
         </form>
         <a class="text-center" href="/">Already have an account?<br>Sign in here</a>
     </div>
