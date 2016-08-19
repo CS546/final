@@ -35,7 +35,7 @@ router.post("/signup", (req, res) => {
 
     data.course_info.addUser(username, null, null, password, null, null, null, null, null).then(user => {
         if(password !== password2) throw "Passwords don't match"
-        res.render("layouts/signup", { partial: "jquery-scripts", user: user });
+        res.render("layouts/account", { partial: "jquery-scripts", user: user });
     }).catch((e) => {
         res.render("layouts/signup", { partial: "jquery-scripts", error: e });
     });
