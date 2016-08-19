@@ -58,5 +58,9 @@ router.get("/schedule", (req, res) => {
     }).end();
 });
 
+router.post("/schedule", (red, res) => {
+    let courses = ()
+});
+
 
 module.exports = router;

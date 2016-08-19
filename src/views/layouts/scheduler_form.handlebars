@@ -1,39 +1,39 @@
 <h1 id="the-heading">Course scheduler</h1>
-<form>
+<form method="post">
     <div class="row">
         <div class="col-sm-6">
             <h2>Courses</h2>
             <div class="form-group col-sm-3">
                 <label for="name">Course 1</label>
-                <input type="text" class="form-control" id="course1" placeholder="AA ###">
+                <input type="text" class="form-control" id="course1" placeholder="AA ###" value="{{ course1 }}">
             </div>
             <div class="form-group col-sm-3">
                 <label for="name">Course 2</label>
-                <input type="text" class="form-control" id="course2" placeholder="AA ###">
+                <input type="text" class="form-control" id="course2" placeholder="AA ###" value="{{ course2 }}">
             </div>
             <div class="form-group col-sm-3">
                 <label for="name">Course 3</label>
-                <input type="text" class="form-control" id="course3" placeholder="AA ###">
+                <input type="text" class="form-control" id="course3" placeholder="AA ###" value="{{ course3 }}">
             </div>
             <div class="form-group col-sm-3">
                 <label for="name">Course 4</label>
-                <input type="text" class="form-control" id="course4" placeholder="AA ###">
+                <input type="text" class="form-control" id="course4" placeholder="AA ###" value="{{ course4 }}">
             </div>
             <div class="form-group col-sm-3">
                 <label for="name">Course 5</label>
-                <input type="text" class="form-control" id="course5" placeholder="AA ###">
+                <input type="text" class="form-control" id="course5" placeholder="AA ###" value="{{ course5 }}">
             </div>
             <div class="form-group col-sm-3">
                 <label for="name">Course 6</label>
-                <input type="text" class="form-control" id="course6" placeholder="AA ###">
+                <input type="text" class="form-control" id="course6" placeholder="AA ###" value="{{ course6 }}">
             </div>
             <div class="form-group col-sm-3">
                 <label for="name">Course 7</label>
-                <input type="text" class="form-control" id="course7" placeholder="AA ###">
+                <input type="text" class="form-control" id="course7" placeholder="AA ###" value="{{ course7 }}">
             </div>
             <div class="form-group col-sm-3">
                 <label for="name">Course 8</label>
-                <input type="text" class="form-control" id="course8" placeholder="AA ###">
+                <input type="text" class="form-control" id="course8" placeholder="AA ###" value="{{ course8 }}">
             </div>
         </div>
         <div class="col-sm-6">
@@ -47,4 +47,5 @@
     <div class="row">
         <button type="submit" class="btn btn-primary col-sm-12">Submit</button>
     </div>
+    <div class="panel-body">{{ asJSON schedules }}</div>
 </form>
