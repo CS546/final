@@ -6,22 +6,25 @@ If we want to make out own calendar view instead of iframing the existing one
 Heres a scheduler API too, look into that
 http://docs.dhtmlx.com/scheduler/api__refs__scheduler.html
 -->
-Scheduler page
+{{#easy-disable}}
 <div class="panel panel-default">
     <div class="panel-heading">JSON course data</div>
     <div class="panel-body">{{ asJSON schedules }}</div>
 </div>
+{{/easy-disable}}
 <div class="list-group">
     <span class="list-group-item active">Courses and links to schedules</span>
     {{#schedules}}
         <a class="list-group-item" href="{{url}}" target="_blank">{{list}}</a>
     {{/schedules}}
-    </div>
 </div>
 
 {{#schedules}}
 <div class="panel col-sm-11 embed-responsive embed-responsive-4by3">
   <iframe class="embed-responsive-item" src="{{url}}"></iframe>
 </div>
+<!--
 <button class="save-form-button btn btn-primary col-sm-1" type="button" value="{{url}}" >Save</button>
+-->
+<input class="btn btn-primary col-sm-1" type="button" onclick="location.href='{{url}}';" value="Open" />
 {{/schedules}}
