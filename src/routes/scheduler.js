@@ -28,14 +28,11 @@ router.post("/", (req, res) => {
             }
         }
     });
-    console.log(courses);
     let path = '/scheduler/schedule?courses=';
     courses.forEach( (course) => {
-        console.log(path);
-        console.log(course);
         path = path + course + ',';
     });
-    path.slice(0, -1);//remove that last comma
+    path = path.slice(0, -1);//remove that last comma
     res.redirect(path);
 });
 
@@ -74,13 +71,19 @@ router.get("/schedule", (req, res) => {
                 for(let i in dataJSON){
                     schedules.push(dataJSON[i]);
                 }
+                //save schedules?
                 res.render("layouts/scheduler", {
-                    partial: "jquery-scripts",
+                    partial: "save-schedule",
                     schedules: schedules
                 });
             }
         });
     }).end();
+});
+
+router.post('/save', (req, res) => {
+    console.log(req.body.url);
+    res.sendStatus(200);
 });
 
 module.exports = router;

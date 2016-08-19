@@ -20,14 +20,8 @@ Scheduler page
 </div>
 
 {{#schedules}}
-<!-- 16:9 aspect ratio
-<div class="embed-responsive embed-responsive-16by9">
-  <iframe class="embed-responsive-item" src="{{url}}"></iframe>
-</div>-->
-
-
-<!-- 4:3 aspect ratio -->
-<div class="panel col-sm-12 embed-responsive embed-responsive-4by3">
+<div class="panel col-sm-11 embed-responsive embed-responsive-4by3">
   <iframe class="embed-responsive-item" src="{{url}}"></iframe>
 </div>
+<button class="save-form-button btn btn-primary col-sm-1" type="button" value="{{url}}" >Save</button>
 {{/schedules}}
