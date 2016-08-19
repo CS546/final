@@ -1,0 +1,49 @@
+<div class="row">
+    <div class="col-sm-12 center-block">
+        <div class="col-sm-12 profile-banner">
+            <div class="row">
+                <h1 class="text-center">Update Your Profile</h1>
+            </div>
+        </div>
+
+        <div class="col-xs-12">
+            <form method="post">
+                <div class="form-group">
+                    <label for="cwid">Campus Wide ID</label>
+                    <input type="number" class="col-sm-6 form-control" id="cwid" name="cwid" placeholder="Campus Wide ID Number" value="{{cwid}}"></input>
+                </div>
+                <div class="form-group">
+                    <label for="major">Major</label>
+                    <input type="text" class="col-sm-6 form-control" id="major" name="major" placeholder="Major" value="{{major}}"></input>
+                </div>
+                <div class="form-group">
+                    <label for="gpa">Current Cummulative GPA</label>
+                    <input type="number" class="col-sm-6 form-control" id="gpa" name="gpa" placeholder="GPA" value="{{gpa}}"></input>
+                </div>
+                <div class="form-group">
+                    <label for="semester_of_entry">Semester of Enrollment</label>
+                    <input type="text" class="col-sm-6 form-control" id="semester_of_entry" name="semester_of_entry" placeholder="Semester Year (ex. FALL 2016)" value="{{semester_of_entry}}"></input>
+                </div>
+                <div class="form-group">
+                    <label for="d_o_g">Graduation Date</label>
+                    <input type="text" class="col-sm-6 form-control" id="d_o_g" name="d_o_g" placeholder="Semester Year (ex. SPRING 2017)" value="{{d_o_g}}"></input>
+                </div>
+                <div class="form-group">
+                    <label for="current_credit_total">Total Credits</label>
+                    <input type="number" class="form-control" id="current_credit_total" name="current_credit_total" placeholder="Total Credits Completed" value="{{current_credit_total}}"></input>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-default center-block">Update</button>
+                </div>
+
+                {{#if error }}
+                    <div class="form-group">
+                        <div class="alert alert-danger text-block">
+                            {{ error }}
+                        </div>
+                    </div>
+                {{/if}}
+            </form>
+        </div>
+    </div>
+</div>
