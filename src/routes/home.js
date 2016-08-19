@@ -13,6 +13,21 @@ router.get("/", (req, res) => {
     });
 });
 
+router.post("/", (req, res) => {
+    let username = (req.body.username);
+    let password = (req.body.password);
+    console.log("username: ", username);
+    console.log("password: ", password);
+
+    data.course_info.getUserByName(username).then(user => {
+        if(password !== user.password) throw "Passwords don't match"
+        res.render("layouts/account", { partial: "jquery-scripts", user: user });
+    }).catch((e) => {
+        console.log("error");
+        res.render("layouts/home", { partial: "jquery-scripts", error: e });
+    });
+});
+
 router.get("/signup", (req, res) => {
     let myData = data.course_info.getData();
     myData.then( (data_result) => {
