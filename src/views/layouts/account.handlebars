@@ -13,37 +13,42 @@
                     <button class="btn btn-default center-block">Sign Out</button>
                 </div>
                 <div class="col-xs-12">
-                    <button class="btn btn-default center-block"><span></span>Edit Profile</button>
+                    <a href="/account/updateAccount">
+                        <button class="btn btn-default center-block"><span class="fa fa-pencil"></span>Edit Profile</button>
+                    </a>
                 </div>
             </div>
         </div>
 
-        <div class="col-xs-12 space-bottom">
-            <div class="row">
-                <label class="col-sm-6 text-right" for="CWID">Campus Wide ID</label>
-                <div id="CWID" class="col-sm-6 text-left">10384594</div>
+        {{#if user.cwid}}
+            <div class="col-xs-12 space-bottom">
+                <div class="row">
+                    <label class="col-sm-6 text-right" for="CWID">Campus Wide ID</label>
+                    <div id="CWID" class="col-sm-6 text-left">{{ user.cwid }}</div>
+                </div>
+                <div class="row">
+                    <label class="col-sm-6 text-right" for="Major">Major</label>
+                    <div id="Major" class="col-sm-6 text-left">{{ user.major }}</div>
+                </div>
+                <div class="row">
+                    <label class="col-sm-6 text-right" for="SemesterOfEntry">Semester of Enrollment</label>
+                    <div id="SemesterOfEntry" class="col-sm-6 text-left">{{ user.semester_of_entry }}</div>
+                </div>
+                <div class="row">
+                    <label class="col-sm-6 text-right" for="GraduationDate">Graduation Date</label>
+                    <div id="GraduationDate" class="col-sm-6 text-left">{{ user.g_o_d }}</div>
+                </div>
+                <div class="row">
+                    <label class="col-sm-6 text-right" for="CWID">Cummulative GPA</label>
+                    <div id="CWID" class="col-sm-6 text-left">{{ user.GPA }}</div>
+                </div>
+                <div class="row">
+                    <label class="col-sm-6 text-right" for="CWID">Completed Credits</label>
+                    <div id="CWID" class="col-sm-6 text-left">{{ user.current_credit_total }}</div>
+                </div>
             </div>
-            <div class="row">
-                <label class="col-sm-6 text-right" for="Major">Major</label>
-                <div id="Major" class="col-sm-6 text-left">Computer Science</div>
-            </div>
-            <div class="row">
-                <label class="col-sm-6 text-right" for="SemesterOfEntry">Semester of Enrollment</label>
-                <div id="SemesterOfEntry" class="col-sm-6 text-left">Fall 2013</div>
-            </div>
-            <div class="row">
-                <label class="col-sm-6 text-right" for="GraduationDate">Graduation Date</label>
-                <div id="GraduationDate" class="col-sm-6 text-left">May 2017</div>
-            </div>
-            <div class="row">
-                <label class="col-sm-6 text-right" for="CWID">Cummulative GPA</label>
-                <div id="CWID" class="col-sm-6 text-left">3.68</div>
-            </div>
-            <div class="row">
-                <label class="col-sm-6 text-right" for="CWID">Completed Credits</label>
-                <div id="CWID" class="col-sm-6 text-left">114</div>
-            </div>
-        </div>
-
+        {{else}}
+            <div class="text-muted text-center">No Content to Show<br>Update Your Profile!</div>
+        {{/if}}
     </div>
 </div>

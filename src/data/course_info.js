@@ -71,22 +71,11 @@ let exportedMethods = {
     getUserById(id)  {
     	return users().then((usersCol) => {
     		return usersCol.findOne({_id: id}).then((foundUser) => {
-    			if(!foundUser) throw "User not found";
+    			if(!foundUser) throw "course not found";
     			return foundUser;
     		});
     	});
     },
-
-    getUserByName(name) {
-        return users().then((userCol) => {
-            return userCol.findOne({ name: name }).then((foundUser) => {
-                if (!foundUser) throw "User not found";
-                console.log(foundUser);
-                return foundUser;
-            });
-        });
-    },
-
     removeUser(user)  {
     	return users().then((userCol) => {
     		return usersCol.removeOne({_id: user._id}).then((deletionInfo) => {
