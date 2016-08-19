@@ -7,9 +7,9 @@ const data = require("../data");
 router.get("/", (req, res) => {
     let myData = data.course_info.getData();
     myData.then( (data_result) => {
-        res.render("layouts/scheduler", {
+        res.render("layouts/scheduler_form", {
             partial: "jquery-scripts",
-            data: data_result
+            course_entry_amount: 7
         });
     });
 });
