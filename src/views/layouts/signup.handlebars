@@ -4,18 +4,18 @@
         <form class="space-bottom" method="post">
             <div class="form-group">
                 <label for="email">Stevens Email</label>
-                <input type="text" class="form-control" id="email" placeholder="Enter your Stevens Email" value="{{ email }}">
+                <input type="text" class="form-control" id="email" name="email" placeholder="Enter your Stevens Email" value="{{ email }}">
             </div>
             <div class="form-group">
                 <label for="username">Username</label>
-                <input type="text" class="form-control" id="username" placeholder="Enter your Stevens Username" value="{{ username }}">
+                <input type="text" class="form-control" id="username" name="username" placeholder="Enter your Stevens Username" value="{{ username }}">
             </div>
             <div class="form-group">
-                <label for="Password">Password</label>
-                <input type="text" class="form-control" id="username" placeholder="Enter your Password" value="{{ password }}">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" placeholder="Enter your Password" value="{{ password }}">
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" placeholder="Confirm your Password" value="{{ password2 }}">
+                <input type="password" class="form-control" name="password2" placeholder="Confirm your Password" value="{{ password2 }}">
             </div>
             <div class="form-group">
                 <button type="submit" class="btn btn-default center-block">Sign Up</button>
@@ -25,13 +25,6 @@
                 <div class="form-group">
                     <div class="alert alert-danger text-block">
                         {{ error }}
-                    </div>
-                </div>
-            {{/if}}
-            {{#if user }}
-                <div class="form-group">
-                    <div class="alert alert-success text-block">
-                        The result is: {{ user }}
                     </div>
                 </div>
             {{/if}}
