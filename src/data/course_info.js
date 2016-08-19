@@ -8,7 +8,7 @@ let getData = () => {
 }
 
 let exportedMethods = {
-    //getData: getData
+    getData: getData, 
     getCourseById(id) {
     	return courses().then((coursesCol) => {
     		return coursesCol.findOne({_id: id}).then((foundCourse) => {
