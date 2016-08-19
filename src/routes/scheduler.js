@@ -14,6 +14,31 @@ router.get("/", (req, res) => {
     });
 });
 
+router.post("/", (req, res) => {
+    let formData = req.body;
+    let courses = [];
+    let saveName = undefined;
+    Object.keys(formData).forEach( (formKey) => {
+        let value = formData[formKey];
+        if (formKey === 'save-name') {
+            saveName = value;
+        }else{
+            if(value !== ''){
+                courses.push(value);
+            }
+        }
+    });
+    console.log(courses);
+    let path = '/scheduler/schedule?courses=';
+    courses.forEach( (course) => {
+        console.log(path);
+        console.log(course);
+        path = path + course + ',';
+    });
+    path.slice(0, -1);//remove that last comma
+    res.redirect(path);
+});
+
 router.get("/schedule", (req, res) => {
     /*
     ex: /schedule?courses=CS 442,CS 392,CS 519,MA 3331
@@ -57,6 +82,5 @@ router.get("/schedule", (req, res) => {
         });
     }).end();
 });
-
 
 module.exports = router;
