@@ -82,8 +82,13 @@ router.get("/schedule", (req, res) => {
 });
 
 router.post('/save', (req, res) => {
-    console.log(req.body.url);
-    res.sendStatus(200);
+    let saveData = req.body.saveData;
+    saveData = saveData.replace("(", "[");
+    saveData = saveData.replace(")", "]");
+    saveData = saveData.replace(/'/g, "\"");
+    console.log(JSON.parse(saveData));
+    let userID = '';
+    data.course_info.addSchedule(userID, saveData);
 });
 
 module.exports = router;
