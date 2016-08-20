@@ -5,7 +5,8 @@ const router = express.Router();
 const data = require("../data");
 
 router.get("/", (req, res) => {
-    let id = sessionStorage.getItem('user_id');
+    let id = sessionStorage.user_id;
+    console.log("get user id: ", id);
     data.course_info.getUserById(id).then((user) => {
         res.render("layouts/account", {
             partial: "jquery-scripts",
@@ -15,7 +16,7 @@ router.get("/", (req, res) => {
 });
 
 router.get("/updateAccount", (req, res) => {
-    let id = sessionStorage.getItem('user_id');
+    let id = sessionStorage.user_id;
     data.course_info.getUserById(id).then((user) => {
         res.render("layouts/updateAccount", {
             partial: "jquery-scripts",
@@ -25,7 +26,7 @@ router.get("/updateAccount", (req, res) => {
 });
 
 router.post("/updateAccount", (req, res) => {
-    let id = sessionStorage.getItem('user_id');
+    let id = sessionStorage.user_id;
     let name = req.body.name;
     let major = (req.body.major);
     let cwid = parseInt(req.body.cwid);
@@ -47,7 +48,6 @@ router.post("/updateAccount", (req, res) => {
     };
 
     data.course_info.updateUser(id, updatedUser).then(user => {
-        if(password !== password2) throw "Passwords don't match"
         res.render("layouts/account", { partial: "jquery-scripts", user: user });
     }).catch((e) => {
         res.render("layouts/updateAccount", { partial: "jquery-scripts", error: e });

@@ -69,6 +69,8 @@ let exportedMethods = {
     	});
     },
     getUserById(id)  {
+      console.log("get user by id called");
+      if (!id) console.log("ID IS UNDEFINED WHEN PASSED TO GET USER BY ID");
     	return users().then((usersCol) => {
     		return usersCol.findOne({_id: id}).then((foundUser) => {
     			if(!foundUser) throw "User not found";
@@ -197,8 +199,8 @@ let exportedMethods = {
     		if(updatedUser.d_o_g) {
     			updatedUserData.d_o_g = updatedUser.d_o_g;
     		}
-    		if(updatedUser.curr_credit_total) {
-    			updatedUserData.curr_credit_total = updatedUser.curr_credit_total;
+    		if(updatedUser.current_credit_total) {
+    			updatedUserData.current_credit_total = updatedUser.current_credit_total;
     		}
     		if(updatedUser.schedules) {
     			updatedUserData.schedules = updatedUser.schedules;
@@ -209,7 +211,7 @@ let exportedMethods = {
     		};
 
     		return userCol.updateOne({_id: id}, updateCommand).then((result) => {
-    			return this.getCourseById(id);
+    			return this.getUserById(id);
     		});
     	});
     },
