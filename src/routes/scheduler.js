@@ -22,7 +22,7 @@ router.get("/", (req, res) => {
 router.post("/", (req, res) => {
     let formData = req.body;
     let courses = [];
-    let saveName = undefined;
+    let saveName = req.body.saveName;
     Object.keys(formData).forEach( (formKey) => {
         let value = formData[formKey];
         if (formKey === 'save-name') {
