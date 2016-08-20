@@ -11,6 +11,7 @@ $('.save-form-button').click( function(){
         },
         success: function(msg)
         {
+            console.log(msg);
             $(this).prop("disabled",true);
         }
     });
