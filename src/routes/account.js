@@ -21,7 +21,7 @@ router.post("/", (req, res) => {
 
     data.course_info.getUserById(id).then(user => {
         data.course_info.getScheduleByName(id, selectedSchedule).then(schedule => {
-            res.render("layouts/account", { partial: "jquery-scripts", user: user, success: "Your password has been successfully updated." })
+            res.render("layouts/account", { partial: "jquery-scripts", user: user, schedule: schedule })
         }).catch((e) => {
             res.render("layouts/account", { partial: "jquery-scripts", user: user, error: e });
         });
