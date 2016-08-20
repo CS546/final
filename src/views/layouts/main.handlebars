@@ -15,8 +15,10 @@
     <main class="container">
         <ul class="nav-bar">
             <li class="nav-header">Stevens Scheduler</li>
-            <li><a class="nav-item" href="/scheduler">Scheduler</a></li>
-            <li><a class="nav-header nav-profile fa fa-user" href="/account"></a></li>
+            {{#if user}}
+                <li><a class="nav-item" href="/scheduler">Scheduler</a></li>
+                <li><a class="nav-header nav-profile fa fa-user" href="/account"></a></li>
+            {{/if}}
         </ul>
         <div class="row">
             <div class="col-sm-12">
@@ -32,6 +34,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS"
         crossorigin="anonymous"></script>
     {{> (lookup . 'partial') }}
+
+    <script ></script>
 </body>
 
 </html>

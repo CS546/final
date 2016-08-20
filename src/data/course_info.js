@@ -58,7 +58,7 @@ let exportedMethods = {
     			semester_of_entry: semester_of_entry,
     			d_o_g: d_o_g,
     			current_credit_total: current_credit_total,
-    			schedule: schedules
+    			schedules: schedules
     		};
 
     		return userCol.insertOne(newUser).then((newUserInfo) => {
@@ -71,11 +71,22 @@ let exportedMethods = {
     getUserById(id)  {
     	return users().then((usersCol) => {
     		return usersCol.findOne({_id: id}).then((foundUser) => {
-    			if(!foundUser) throw "course not found";
+    			if(!foundUser) throw "User not found";
     			return foundUser;
     		});
     	});
     },
+
+    getUserByName(name) {
+        return users().then((userCol) => {
+            return userCol.findOne({ name: name }).then((foundUser) => {
+                if (!foundUser) throw "User not found";
+                console.log(foundUser);
+                return foundUser;
+            });
+        });
+    },
+
     removeUser(user)  {
     	return users().then((userCol) => {
     		return usersCol.removeOne({_id: user._id}).then((deletionInfo) => {
@@ -186,8 +197,8 @@ let exportedMethods = {
     		if(updatedUser.d_o_g) {
     			updatedUserData.d_o_g = updatedUser.d_o_g;
     		}
-    		if(updatedUser.curr_credit_total) {
-    			updatedUserData.curr_credit_total = updatedUser.curr_credit_total;
+    		if(updatedUser.current_credit_total) {
+    			updatedUserData.current_credit_total = updatedUser.current_credit_total;
     		}
     		if(updatedUser.schedules) {
     			updatedUserData.schedules = updatedUser.schedules;
@@ -198,7 +209,7 @@ let exportedMethods = {
     		};
 
     		return userCol.updateOne({_id: id}, updateCommand).then((result) => {
-    			return this.getCourseById(id);
+    			return this.getUserById(id);
     		});
     	});
     },
@@ -207,6 +218,15 @@ let exportedMethods = {
         return users().then((userCol) => {
             return userCol.update({_id: id}, {$addToSet: {"schedules": schedule}}).then((result) => {
                 return this.getUserById(id);
+            });
+        });
+    },
+
+    getScheduleByName(userId, schedName) {
+        return users().then((userCol) => {
+            return userCol.findOne({_id: userId}, {schedules: {$elemMatch: {name: schedName}}}).then((mySched) => {
+                if(!mySched) throw "schedule not found";
+                return mySched;
             });
         });
     }
