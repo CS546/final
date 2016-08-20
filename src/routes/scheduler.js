@@ -22,7 +22,7 @@ router.get("/", (req, res) => {
 router.post("/", (req, res) => {
     let formData = req.body;
     let courses = [];
-    let saveName = req.body.save-name;
+    let saveName = req.body.saveName;
     Object.keys(formData).forEach( (formKey) => {
         let value = formData[formKey];
         if (formKey === 'save-name') {
@@ -96,7 +96,7 @@ router.post('/save', (req, res) => {
     saveData = saveData.replace(")", "]");
     saveData = saveData.replace(/'/g, "\"");
     let userID = req.body.userID;
-    if( (userID === null) || (userID ==== undefined) ){
+    if( (userID === null) || (userID === undefined) ){
         res.sendStatus(500).send("User ID not detected in session storage");
     }
     console.log(userID);
