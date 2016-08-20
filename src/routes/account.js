@@ -54,4 +54,35 @@ router.post("/updateAccount", (req, res) => {
     });
 });
 
+router.get("/changePassword", (req, res) => {
+    let id = sessionStorage.user_id;
+    data.course_info.getUserById(id).then((user) => {
+        res.render("layouts/changePassword", {
+            partial: "jquery-scripts",
+            user: user
+        });
+    });
+});
+
+router.post("/changePassword", (req, res) => {
+    let id = sessionStorage.user_id;
+    let oldPassword = (req.body.oldPassword);
+    let newPassword = (req.body.newPassword);
+    let newPassword2 = (req.body.newPassword2);
+
+    data.course_info.getUserById(id).then(user => {
+        console.log("user's original pasword: ", user.password);
+        console.log("old password entered: ", oldPassword);
+        if(user.password !== oldPassword) throw "Original password is incorrect."
+        if(newPassword !== newPassword2) throw "New passwords do not match."
+
+        let updatedUser = {password: newPassword};
+        data.course_info.updateUser(id, updatedUser).then((newUser) => {
+            res.render("layouts/changePassword", { partial: "jquery-scripts", user: newUser, success: "Your password has been successfully updated." })
+        });
+    }).catch((e) => {
+        res.render("layouts/changePassword", { partial: "jquery-scripts", error: e });
+    });
+});
+
 module.exports = router;

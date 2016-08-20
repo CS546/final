@@ -62,16 +62,4 @@ router.post("/signup", (req, res) => {
     });
 });
 
-router.get("/changePassword", (req, res) => {
-    let myData = data.course_info.getData();
-    myData.then( (data_result) => {
-        res.render("layouts/changePassword", {
-            partial: "jquery-scripts",
-            placeholderData: data_result
-        });
-    });
-});
-
-
-
 module.exports = router;

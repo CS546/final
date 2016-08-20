@@ -58,7 +58,7 @@ let exportedMethods = {
     			semester_of_entry: semester_of_entry,
     			d_o_g: d_o_g,
     			current_credit_total: current_credit_total,
-    			schedule: schedules
+    			schedules: schedules
     		};
 
     		return userCol.insertOne(newUser).then((newUserInfo) => {
