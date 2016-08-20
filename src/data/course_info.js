@@ -69,8 +69,6 @@ let exportedMethods = {
     	});
     },
     getUserById(id)  {
-      console.log("get user by id called");
-      if (!id) console.log("ID IS UNDEFINED WHEN PASSED TO GET USER BY ID");
     	return users().then((usersCol) => {
     		return usersCol.findOne({_id: id}).then((foundUser) => {
     			if(!foundUser) throw "User not found";
