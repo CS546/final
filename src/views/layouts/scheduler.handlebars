@@ -21,7 +21,7 @@ http://docs.dhtmlx.com/scheduler/api__refs__scheduler.html
 
 {{#schedules}}
 <div class="panel col-sm-11 embed-responsive embed-responsive-4by3">
-  <iframe class="embed-responsive-item" src="{{url}}"></iframe>
+  <iframe class="embed-responsive-item" src="{{url}}" sandbox="allow-scripts allow-same-origin"></iframe>
 </div>
 <button class="save-form-button btn btn-primary col-sm-1" type="button" value='{"url":"{{url}}", "list":{{ list }} }' >Save</button>
 <!--
