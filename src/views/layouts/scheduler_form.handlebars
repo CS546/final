@@ -1,8 +1,14 @@
-<h1 id="the-heading">Course scheduler</h1>
+<h1 id="the-heading" class="text-center login-banner">Course Scheduler</h1>
 <form action="/scheduler" method="POST">
     <div class="row">
-        <div class="col-sm-3"></div>
-        <div class="col-sm-6">
+        <div class="col-sm-12">
+            <h2>Information</h2>
+            <div class="form-group col-sm-12">
+                <label for="name">Save name</label>
+                <input type="text" class="form-control" id="save-name" name="save-name" placeholder="My amazing course schedules" value="{{save-name}}">
+            </div>
+        </div>
+        <div class="col-sm-12 space-bottom">
             <h2>Courses</h2>
             <div class="form-group col-sm-3">
                 <label for="course1">Course 1</label>
@@ -37,18 +43,8 @@
                 <input type="text" class="form-control" id="course8" name="course8" placeholder="AA ###">
             </div>
         </div>
-        <div class="col-sm-3"></div>
-        <!--
-        <div class="col-sm-6">
-            <h2>Information</h2>
-            <div class="form-group col-sm-12">
-                <label for="name">Save name:</label>
-                <input type="text" class="form-control" id="save-name" name="save-name" placeholder="My amazing course schedules">
-            </div>
-        </div>
-        -->
     </div>
     <div class="row">
-        <button type="submit" class="btn btn-primary col-sm-12">Submit</button>
+        <button type="submit" class="btn btn-primary center-block">Submit</button>
     </div>
 </form>
