@@ -1,6 +1,10 @@
 #To run
 npm install
+
+npm run-script seed
+
 npm start
+
 go to http://localhost:1738/
 
 # final
