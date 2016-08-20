@@ -24,6 +24,7 @@
     "express-handlebars": "^3.0.0",
     "handlebars": "^4.0.5",
     "mongodb": "^2.2.5",
-    "node-uuid": "^1.4.7"
+    "node-uuid": "^1.4.7",
+    "sessionstorage": "0.0.1"
   }
 }
