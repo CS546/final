@@ -57,10 +57,8 @@ div.buttons {
                 </div>
             </div>
             <form method="POST">
-                <div class="form-group">
-                    <label for="selectedSchedule">Saved Schedules</label>
-                </div>
-                {{#if user.schedules.length > 0}}
+                <h2 class="text-center space-bottom">Saved Schedules</h2>
+                {{#if user.schedules.length}}
                     <select class="form-control" value="{{ selectedSchedule }}" name="selectedSchedule" id="selectedSchedule">
                         {{#user.schedules}}
                             <option value="{{ name }}">{{ name }}</option>
@@ -68,7 +66,7 @@ div.buttons {
                     </select>
                     {{#if selectedSchedule}}
                         <div class="panel col-sm-12 embed-responsive embed-responsive-4by3">
-                            <iframe class="embed-responsive-item" src="{{url}}"></iframe>
+                            <iframe class="embed-responsive-item" src="{{ schedule.url }}"></iframe>
                         </div>
                     {{else}}
                         <div class="text-muted text-center center-block">Select a schedule to view</div>
