@@ -218,13 +218,10 @@ let exportedMethods = {
     	});
     },
 
-    addSchedule: (id, schedule) => {
-        console.log("Got here!");
+    addSchedule(id, schedule) {
         return users().then((userCol) => {
-            console.log("And here!");
             return userCol.update({_id: id}, {$addToSet: {"schedules": schedule}}).then((result) => {
-                console.log("And maybe here...");
-                return schedule;
+                return this.getUserById(id);
             }).catch((e) => {
                 console.log(e);
             });
