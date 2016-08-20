@@ -236,7 +236,7 @@ let exportedMethods = {
                 //returns object with structure
                 //{ _id: ..., schedules: [ { url:.., list:..., name: ... }, ...]
                 if(!mySched) throw "schedule not found";
-                console.log("found scheudle: ", mySched);
+                //console.log("found scheudle: ", mySched);
                 return mySched;
             });
         });

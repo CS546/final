@@ -115,7 +115,7 @@ router.post('/save', (req, res) => {
     saveData = saveData.replace("(", "[");
     saveData = saveData.replace(")", "]");
     saveData = saveData.replace(/'/g, "\"");
-    console.log("saveData before: ", saveData);
+    //console.log("saveData before: ", saveData);
     if(saveData.slice(-4) === ',] }') {
         saveData = saveData.slice(0, -4) + "]}";
     }
