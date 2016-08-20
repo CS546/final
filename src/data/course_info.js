@@ -47,6 +47,7 @@ let exportedMethods = {
     },
 
     addUser(name, major, cwid, password, gpa, semester_of_entry, d_o_g, current_credit_total, schedules) {
+      if (!schedules) schedules = [];
     	return users().then((userCol) => {
     		let newUser = {
     			_id: uuid.v4(),
@@ -69,7 +70,11 @@ let exportedMethods = {
     	});
     },
     getUserById(id)  {
+      console.log("getUserById called");
+      console.log(id);
     	return users().then((usersCol) => {
+    	  console.log("1");
+    	  console.log(id);
     		return usersCol.findOne({_id: id}).then((foundUser) => {
     			if(!foundUser) throw "User not found";
     			console.log("getUserById called. found user: ", foundUser);
@@ -216,8 +221,11 @@ let exportedMethods = {
     },
 
     addSchedule(id, schedule) {
+        console.log("add to schedule id: ", id);
         return users().then((userCol) => {
+            console.log("1");
             return userCol.update({_id: id}, {$addToSet: {"schedules": schedule}}).then((result) => {
+                console.log("2", id);
                 return this.getUserById(id);
             });
         });

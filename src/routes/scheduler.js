@@ -23,6 +23,7 @@ router.post("/", (req, res) => {
     let formData = req.body;
     let courses = [];
     let saveName = req.body.saveName;
+    sessionStorage.schedule_name = saveName;
     Object.keys(formData).forEach( (formKey) => {
         let value = formData[formKey];
         if (formKey === 'saveName') {
@@ -94,21 +95,28 @@ router.get("/schedule", (req, res) => {
 
 router.post('/save', (req, res) => {
     let saveData = req.body.saveData;
-    console.log("saveData before: ", saveData);
     saveData = saveData.replace("(", "[");
     saveData = saveData.replace(")", "]");
     saveData = saveData.replace(/'/g, "\"");
+    console.log("saveData before: ", saveData);
     if(saveData.slice(-4) === ',] }') {
         saveData = saveData.slice(0, -4) + "]}";
+        saveData = JSON.parse(saveData);
     }
+
+    if (sessionStorage.schedule_name || sessionStorage.schedule_name.length > 0) saveData.name = sessionStorage.schedule_name;
+    else saveData.name = "";
+
     console.log("saveData after: ", saveData);
-    let userID = req.body.userID;
-    console.log("save data: ", JSON.parse(saveData));
+    let userID = sessionStorage.user_id;
+    console.log("save data: ", saveData);
     if( (userID === null) || (userID === undefined) ){
         res.sendStatus(500).send("User ID not detected in session storage");
     }
-    data.course_info.addSchedule(userID, JSON.parse(saveData)).then(user => {
-        console.log("user schedules after save: ", user.schedules);
+    data.course_info.addSchedule(userID, saveData).then(user => {
+        console.log("user schedules after save: ", user);
+    }).catch((e) => {
+        console.log(e);
     });
     res.sendStatus(200);
 });
