@@ -7,19 +7,19 @@
 
             <div class="row">
                 <div class="buttons">
-                    <a href="/account/changePassword">
-                        <button class="btn btn-default center-block"><span class="fa fa-shield"></span> Change Password</button>
-                    </a>
+                    <form>
+                    <button class="btn btn-default center-block" type="submit" formaction="/account/changePassword"><span class="fa fa-shield"></span> Change Password</button>
+                    </form>
                 </div>
                 <div class="buttons">
-                    <a href="/account/updateAccount">
-                        <button class="btn btn-default center-block"><span class="fa fa-pencil"></span> Edit Profile</button>
-                    </a>
+                    <form>
+                        <button class="btn btn-default center-block" type="submit" formaction="/account/updateAccount"><span class="fa fa-pencil"></span> Edit Profile</button>
+                    </form>
                 </div>
                 <div class="buttons">
-                    <a href="/">
-                    <button class="btn btn-default center-block">Sign Out</button>
-                    </a>
+                    <form>
+                    <button class="btn btn-default center-block" type="submit" formaction="/">Sign Out</button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -27,28 +27,28 @@
         {{#if user.cwid}}
             <div class="col-xs-12 space-bottom">
                 <div class="row">
-                    <label class="col-sm-6 text-right" for="CWID">Campus Wide ID</label>
+                    <label class="col-sm-6 text-right" >Campus Wide ID</label>
                     <div id="CWID" class="col-sm-6 text-left">{{ user.cwid }}</div>
                 </div>
                 <div class="row">
-                    <label class="col-sm-6 text-right" for="Major">Major</label>
+                    <label class="col-sm-6 text-right" >Major</label>
                     <div id="Major" class="col-sm-6 text-left">{{ user.major }}</div>
                 </div>
                 <div class="row">
-                    <label class="col-sm-6 text-right" for="SemesterOfEntry">Semester of Enrollment</label>
+                    <label class="col-sm-6 text-right" >Semester of Enrollment</label>
                     <div id="SemesterOfEntry" class="col-sm-6 text-left">{{ user.semester_of_entry }}</div>
                 </div>
                 <div class="row">
-                    <label class="col-sm-6 text-right" for="GraduationDate">Graduation Date</label>
+                    <label class="col-sm-6 text-right" >Graduation Date</label>
                     <div id="GraduationDate" class="col-sm-6 text-left">{{ user.d_o_g }}</div>
                 </div>
                 <div class="row">
-                    <label class="col-sm-6 text-right" for="CWID">Cummulative GPA</label>
-                    <div id="CWID" class="col-sm-6 text-left">{{ user.gpa }}</div>
+                    <label class="col-sm-6 text-right" >Cummulative GPA</label>
+                    <div id="TotalGPA" class="col-sm-6 text-left">{{ user.gpa }}</div>
                 </div>
                 <div class="row">
-                    <label class="col-sm-6 text-right" for="CWID">Completed Credits</label>
-                    <div id="CWID" class="col-sm-6 text-left">{{ user.current_credit_total }}</div>
+                    <label class="col-sm-6 text-right" >Completed Credits</label>
+                    <div id="TotalCredits" class="col-sm-6 text-left">{{ user.current_credit_total }}</div>
                 </div>
             </div>
             <form method="POST">
