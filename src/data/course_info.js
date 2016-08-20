@@ -209,6 +209,15 @@ let exportedMethods = {
                 return this.getUserById(id);
             });
         });
+    },
+
+    getScheduleByName(userId, schedName) {
+        return users().then((userCol) => {
+            return userCol.findOne({_id: userId}, {schedules: {$elemMatch: {name: schedName}}}).then((mySched) => {
+                if(!mySched) throw "schedule not found";
+                return mySched;
+            });
+        });
     }
 }
 
