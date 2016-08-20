@@ -1,3 +1,8 @@
+<style>
+div.buttons {
+    margin: 5px 5px 5px 5px;
+}
+</style>
 <div class="row">
     <div class="col-sm-12 center-block">
         <div class="col-sm-12 profile-banner space-bottom">
@@ -6,19 +11,19 @@
             </div>
 
             <div class="row">
-                <div class="col-xs-12">
+                <div class="buttons">
                     <a href="/account/changePassword">
-                        <button class="btn btn-default center-block">Change Password</button>
+                        <button class="btn btn-default center-block"><span class="fa fa-shield"></span> Change Password</button>
                     </a>
                 </div>
-                <div class="col-xs-12">
+                <div class="buttons">
+                    <a href="/account/updateAccount">
+                        <button class="btn btn-default center-block"><span class="fa fa-pencil"></span> Edit Profile</button>
+                    </a>
+                </div>
+                <div class="buttons">
                     <a href="/">
                     <button class="btn btn-default center-block">Sign Out</button>
-                    </a>
-                </div>
-                <div class="col-xs-12">
-                    <a href="/account/updateAccount">
-                        <button class="btn btn-default center-block"><span class="fa fa-pencil"></span>Edit Profile</button>
                     </a>
                 </div>
             </div>
@@ -56,3 +61,4 @@
         {{/if}}
     </div>
 </div>
+
