@@ -64,6 +64,9 @@ div.buttons {
                             <option value="{{ name }}">{{ name }}</option>
                         {{/user.schedules}}
                     </select>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-default center-block">View Schedule</button>
+                    </div>
                     {{#if selectedSchedule}}
                         <div class="panel col-sm-12 embed-responsive embed-responsive-4by3">
                             <iframe class="embed-responsive-item" src="{{ schedule.url }}"></iframe>
