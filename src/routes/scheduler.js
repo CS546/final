@@ -1,5 +1,5 @@
 const express = require('express');
-const sessionStorage = require('sessionStorage');
+const sessionStorage = require('sessionstorage');
 var http = require('http');
 const router = express.Router();
 
@@ -22,7 +22,7 @@ router.get("/", (req, res) => {
 router.post("/", (req, res) => {
     let formData = req.body;
     let courses = [];
-    let saveName = undefined;
+    let saveName = req.body.save-name;
     Object.keys(formData).forEach( (formKey) => {
         let value = formData[formKey];
         if (formKey === 'save-name') {
