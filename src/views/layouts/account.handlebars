@@ -49,6 +49,15 @@
                     <div id="CWID" class="col-sm-6 text-left">{{ user.current_credit_total }}</div>
                 </div>
             </div>
+            {{#user.schedules}}
+                <div class="panel col-sm-11 embed-responsive embed-responsive-4by3">
+                    <iframe class="embed-responsive-item" src="{{url}}"></iframe>
+                </div>
+                <button class="save-form-button btn btn-primary col-sm-1" type="button" value='{"url":"{{url}}", "list":{{list}} }' >Save</button>
+                <!--
+<input class="btn btn-primary col-sm-1" type="button" onclick="location.href='{{url}}';" value="Open" />
+-->
+            {{/user.schedules}}
         {{else}}
             <div class="text-muted text-center">No Content to Show<br>Update Your Profile!</div>
         {{/if}}
