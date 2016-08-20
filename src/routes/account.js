@@ -6,7 +6,6 @@ const data = require("../data");
 
 router.get("/", (req, res) => {
     let id = sessionStorage.user_id;
-    console.log("get user id: ", id);
     data.course_info.getUserById(id).then((user) => {
         res.render("layouts/account", {
             partial: "jquery-scripts",
@@ -21,7 +20,7 @@ router.post("/", (req, res) => {
 
     data.course_info.getUserById(id).then(user => {
         data.course_info.getScheduleByName(id, selectedSchedule).then(schedule => {
-            res.render("layouts/account", { partial: "jquery-scripts", user: user, schedule: schedule })
+            res.render("layouts/account", { partial: "jquery-scripts", user: user, schedule: schedule.schedules[0] })
         }).catch((e) => {
             res.render("layouts/account", { partial: "jquery-scripts", user: user, error: e });
         });
@@ -42,7 +41,6 @@ router.get("/updateAccount", (req, res) => {
 
 router.post("/updateAccount", (req, res) => {
     let id = sessionStorage.user_id;
-    let name = req.body.name;
     let major = (req.body.major);
     let cwid = parseInt(req.body.cwid);
     let password = req.body.password
@@ -51,21 +49,37 @@ router.post("/updateAccount", (req, res) => {
     let d_o_g = (req.body.d_o_g);
     let current_credit_total = (req.body.current_credit_total);
 
-    let updatedUser = {
-        name: name,
-        major: major,
-        cwid: cwid,
-        password: password,
-        gpa: gpa,
-        semester_of_entry: semester_of_entry,
-        d_o_g: d_o_g,
-        current_credit_total: current_credit_total
-    };
+    let updatedUser = {};
 
-    data.course_info.updateUser(id, updatedUser).then(user => {
-        res.render("layouts/account", { partial: "jquery-scripts", user: user });
-    }).catch((e) => {
-        res.render("layouts/updateAccount", { partial: "jquery-scripts", error: e });
+    if(major) {
+      updatedUser.major = major;
+    }
+    if(cwid) {
+      updatedUser.cwid = cwid;
+    }
+    if(password) {
+      updatedUser.password = password;
+    }
+    if(gpa) {
+      updatedUser.gpa = gpa;
+    }
+    if(semester_of_entry) {
+      updatedUser.semester_of_entry = semester_of_entry;
+    }
+    if(d_o_g) {
+      updatedUser.d_o_g = d_o_g;
+    }
+    if(current_credit_total) {
+      updatedUser.current_credit_total = current_credit_total;
+    }
+
+    data.course_info.getUserById(id).then(user => {
+        data.course_info.updateUser(id, updatedUser).then(updatedUser => {
+            if (!user.cwid && !updatedUser.cwid) throw "Campus Wide ID Required"
+            res.redirect('/account');
+        }).catch((e) => {
+            res.render("layouts/updateAccount", { partial: "jquery-scripts", error: e });
+        });
     });
 });
 
@@ -86,8 +100,6 @@ router.post("/changePassword", (req, res) => {
     let newPassword2 = (req.body.newPassword2);
 
     data.course_info.getUserById(id).then(user => {
-        console.log("user's original pasword: ", user.password);
-        console.log("old password entered: ", oldPassword);
         if(user.password !== oldPassword) throw "Original password is incorrect."
         if(newPassword !== newPassword2) throw "New passwords do not match."
 

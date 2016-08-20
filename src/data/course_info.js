@@ -70,24 +70,22 @@ let exportedMethods = {
     	});
     },
     getUserById(id)  {
-      console.log("getUserById called");
-      console.log(id);
     	return users().then((usersCol) => {
-    	  console.log("1");
-    	  console.log(id);
     		return usersCol.findOne({_id: id}).then((foundUser) => {
     			if(!foundUser) throw "User not found";
-    			console.log("getUserById called. found user: ", foundUser);
     			return foundUser;
-    		});
-    	});
+    		}).catch((e) => {
+            console.log(e);
+        });
+    	}).catch((e) => {
+          console.log(e);
+      });
     },
 
     getUserByName(name) {
         return users().then((userCol) => {
             return userCol.findOne({ name: name }).then((foundUser) => {
                 if (!foundUser) throw "User not found";
-                console.log(foundUser);
                 return foundUser;
             });
         });
@@ -221,20 +219,24 @@ let exportedMethods = {
     },
 
     addSchedule(id, schedule) {
-        console.log("add to schedule id: ", id);
         return users().then((userCol) => {
-            console.log("1");
             return userCol.update({_id: id}, {$addToSet: {"schedules": schedule}}).then((result) => {
-                console.log("2", id);
                 return this.getUserById(id);
+            }).catch((e) => {
+                console.log(e);
             });
+        }).catch((e) => {
+            console.log(e);
         });
     },
 
     getScheduleByName(userId, schedName) {
         return users().then((userCol) => {
             return userCol.findOne({_id: userId}, {schedules: {$elemMatch: {name: schedName}}}).then((mySched) => {
+                //returns object with structure
+                //{ _id: ..., schedules: [ { url:.., list:..., name: ... }, ...]
                 if(!mySched) throw "schedule not found";
+                console.log("found scheudle: ", mySched);
                 return mySched;
             });
         });

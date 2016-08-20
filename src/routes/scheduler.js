@@ -38,9 +38,7 @@ router.post("/", (req, res) => {
     courses.forEach( (course) => {
         path = path + course + ',';
     });
-    console.log("path before slice", path);
     path = path.slice(0, -1);//remove that last comma
-    console.log("path after slice", path);
     res.redirect(path);
 });
 
@@ -101,20 +99,17 @@ router.post('/save', (req, res) => {
     console.log("saveData before: ", saveData);
     if(saveData.slice(-4) === ',] }') {
         saveData = saveData.slice(0, -4) + "]}";
-        saveData = JSON.parse(saveData);
     }
+    saveData = JSON.parse(saveData);
 
     if (sessionStorage.schedule_name || sessionStorage.schedule_name.length > 0) saveData.name = sessionStorage.schedule_name;
     else saveData.name = "";
 
-    console.log("saveData after: ", saveData);
     let userID = sessionStorage.user_id;
-    console.log("save data: ", saveData);
     if( (userID === null) || (userID === undefined) ){
         res.sendStatus(500).send("User ID not detected in session storage");
     }
     data.course_info.addSchedule(userID, saveData).then(user => {
-        console.log("user schedules after save: ", user);
     }).catch((e) => {
         console.log(e);
     });
