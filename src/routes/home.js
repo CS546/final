@@ -55,8 +55,7 @@ router.post("/signup", (req, res) => {
 
     data.course_info.addUser(username, null, null, password, null, null, null, null, null).then(user => {
         if(password !== password2) throw "Passwords don't match"
-        sessionStorage.setItem('store user_id', user._id);
-        console.log("get session storage id: ", sessionStorage.getItem('store user_id'));
+        sessionStorage.user_id = user._id;
         res.render("layouts/account", { partial: "jquery-scripts", user: user });
     }).catch((e) => {
         res.render("layouts/signup", { partial: "jquery-scripts", error: e });
