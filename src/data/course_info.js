@@ -224,7 +224,7 @@ let exportedMethods = {
             console.log("And here!");
             return userCol.update({_id: id}, {$addToSet: {"schedules": schedule}}).then((result) => {
                 console.log("And maybe here...");
-                return this.getUserById(id);
+                return schedule;
             }).catch((e) => {
                 console.log(e);
             });

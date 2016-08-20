@@ -110,7 +110,7 @@ router.post('/save', (req, res) => {
         res.sendStatus(500).send("User ID not detected in session storage");
     }
     data.course_info.addSchedule(userID, saveData).then( (user) => {
-        sendStatus(200);
+        res.sendStatus(200);
     }).catch((e) => {
         console.log(e);
     });
