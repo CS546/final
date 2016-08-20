@@ -95,11 +95,13 @@ router.post('/save', (req, res) => {
     saveData = saveData.replace("(", "[");
     saveData = saveData.replace(")", "]");
     saveData = saveData.replace(/'/g, "\"");
-    console.log(JSON.parse(saveData));
-    let userID = sessionStorage.user_id;
-    data.course_info.addSchedule(userID, saveData).then((user) => {
-        console.log("user schedules: ", user.schedules);
-    });
+    let userID = req.body.userID;
+    if( (userID === null) || (userID ==== undefined) ){
+        res.sendStatus(500).send("User ID not detected in session storage");
+    }
+    console.log(userID);
+    data.course_info.addSchedule(userID, JSON.parse(saveData));
+    res.sendStatus(200);
 });
 
 module.exports = router;
