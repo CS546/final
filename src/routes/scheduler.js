@@ -92,17 +92,13 @@ router.get("/schedule", (req, res) => {
 
 router.post('/save', (req, res) => {
     let saveData = req.body.saveData;
-    saveData = saveData.replace("(", "[");
-    saveData = saveData.replace(")", "]");
-    saveData = saveData.replace(/'/g, "\"");
     let userID = req.body.userID;
     if( (userID === null) || (userID === undefined) ){
         res.sendStatus(500).send("User ID not detected in session storage");
     }
-    data.course_info.addSchedule(userID, JSON.parse(saveData)).then(user => {
-        console.log("user schedules after save: ", user.schedules)
+    data.course_info.addSchedule(userID, saveData).then(user => {
+        res.sendStatus(200);
     });
-    res.sendStatus(200);
 });
 
 module.exports = router;
