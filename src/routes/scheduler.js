@@ -25,7 +25,7 @@ router.post("/", (req, res) => {
     let saveName = req.body.saveName;
     Object.keys(formData).forEach( (formKey) => {
         let value = formData[formKey];
-        if (formKey === 'save-name') {
+        if (formKey === 'saveName') {
             saveName = value;
         }else{
             if(value !== ''){
@@ -37,7 +37,9 @@ router.post("/", (req, res) => {
     courses.forEach( (course) => {
         path = path + course + ',';
     });
+    console.log("path before slice", path);
     path = path.slice(0, -1);//remove that last comma
+    console.log("path after slice", path);
     res.redirect(path);
 });
 
@@ -92,10 +94,16 @@ router.get("/schedule", (req, res) => {
 
 router.post('/save', (req, res) => {
     let saveData = req.body.saveData;
+    console.log("saveData before: ", saveData);
     saveData = saveData.replace("(", "[");
     saveData = saveData.replace(")", "]");
     saveData = saveData.replace(/'/g, "\"");
+    if(saveData.slice(-4) === ',] }') {
+        saveData = saveData.slice(0, -4) + "]}";
+    }
+    console.log("saveData after: ", saveData);
     let userID = req.body.userID;
+    console.log("save data: ", JSON.parse(saveData));
     if( (userID === null) || (userID === undefined) ){
         res.sendStatus(500).send("User ID not detected in session storage");
     }
