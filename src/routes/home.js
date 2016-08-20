@@ -17,17 +17,17 @@ router.get("/", (req, res) => {
 router.post("/", (req, res) => {
     let username = (req.body.username);
     let password = (req.body.password);
-    console.log("username: ", username);
-    console.log("password: ", password);
+    //console.log("username: ", username);
+    //console.log("password: ", password);
 
     data.course_info.getUserByName(username).then(user => {
         if(password !== user.password) throw "Incorrect Password"
-        console.log("store user id: ", user._id);
+        //console.log("store user id: ", user._id);
         sessionStorage.user_id = user._id;
-        console.log("get session storage id: ", sessionStorage.user_id);
+        //console.log("get session storage id: ", sessionStorage.user_id);
         res.render("layouts/account", { partial: "jquery-scripts", user: user });
     }).catch((e) => {
-        console.log("error");
+        //console.log("error");
         res.render("layouts/home", { partial: "jquery-scripts", error: e });
     });
 });
@@ -49,13 +49,13 @@ router.post("/signup", (req, res) => {
     let password = (req.body.password);
     let password2 = (req.body.password2);
 
-    console.log("password1: ", password);
-    console.log("password2: ", password2);
+    //console.log("password1: ", password);
+    //console.log("password2: ", password2);
 
     data.course_info.addUser(username, null, null, password, null, null, null, null, null).then(user => {
         if(password !== password2) throw "Passwords don't match"
         sessionStorage.setItem('store user_id', user._id);
-        console.log("get session storage id: ", sessionStorage.getItem('store user_id'));
+        //console.log("get session storage id: ", sessionStorage.getItem('store user_id'));
         res.render("layouts/account", { partial: "jquery-scripts", user: user });
     }).catch((e) => {
         res.render("layouts/signup", { partial: "jquery-scripts", error: e });
