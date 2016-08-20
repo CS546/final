@@ -1,3 +1,8 @@
+#To run
+npm install
+npm start
+go to http://localhost:1738/
+
 # final
 Our final project for CS546
 
