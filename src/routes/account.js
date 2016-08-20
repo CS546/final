@@ -15,6 +15,21 @@ router.get("/", (req, res) => {
     });
 });
 
+router.post("/", (req, res) => {
+    let id = sessionStorage.user_id;
+    let selectedSchedule = req.body.selectedSchedule;
+
+    data.course_info.getUserById(id).then(user => {
+        data.course_info.getScheduleByName(id, selectedSchedule).then(schedule => {
+            res.render("layouts/account", { partial: "jquery-scripts", user: user, success: "Your password has been successfully updated." })
+        }).catch((e) => {
+            res.render("layouts/account", { partial: "jquery-scripts", user: user, error: e });
+        });
+    }).catch((e) => {
+        res.status(404).render("layouts/error", { partial: "jquery-scripts", error: {status: '404', message: e} });
+    });
+});
+
 router.get("/updateAccount", (req, res) => {
     let id = sessionStorage.user_id;
     data.course_info.getUserById(id).then((user) => {

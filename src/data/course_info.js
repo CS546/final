@@ -72,6 +72,7 @@ let exportedMethods = {
     	return users().then((usersCol) => {
     		return usersCol.findOne({_id: id}).then((foundUser) => {
     			if(!foundUser) throw "User not found";
+    			console.log("getUserById called. found user: ", foundUser);
     			return foundUser;
     		});
     	});

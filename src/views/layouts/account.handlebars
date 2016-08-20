@@ -56,15 +56,27 @@ div.buttons {
                     <div id="CWID" class="col-sm-6 text-left">{{ user.current_credit_total }}</div>
                 </div>
             </div>
-            {{#user.schedules}}
-                <div class="panel col-sm-11 embed-responsive embed-responsive-4by3">
-                    <iframe class="embed-responsive-item" src="{{url}}"></iframe>
+            <form method="POST">
+                <div class="form-group">
+                    <label for="selectedSchedule">Saved Schedules</label>
                 </div>
-                <button class="save-form-button btn btn-primary col-sm-1" type="button" value='{"url":"{{url}}", "list":{{list}} }' >Save</button>
-                <!--
-<input class="btn btn-primary col-sm-1" type="button" onclick="location.href='{{url}}';" value="Open" />
--->
-            {{/user.schedules}}
+                {{#if user.schedules.length > 0}}
+                    <select class="form-control" value="{{ selectedSchedule }}" name="selectedSchedule" id="selectedSchedule">
+                        {{#user.schedules}}
+                            <option value="{{ name }}">{{ name }}</option>
+                        {{/user.schedules}}
+                    </select>
+                    {{#if selectedSchedule}}
+                        <div class="panel col-sm-12 embed-responsive embed-responsive-4by3">
+                            <iframe class="embed-responsive-item" src="{{url}}"></iframe>
+                        </div>
+                    {{else}}
+                        <div class="text-muted text-center center-block">Select a schedule to view</div>
+                    {{/if}}
+                {{else}}
+                    <div class="text-muted text-center">No saves schedules to show.<br>How about adding a schedule?</div>
+                {{/if}}
+            </form>
         {{else}}
             <div class="text-muted text-center">No Content to Show<br>Update Your Profile!</div>
         {{/if}}
