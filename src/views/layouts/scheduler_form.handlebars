@@ -47,4 +47,18 @@
     <div class="row">
         <button type="submit" class="btn btn-primary center-block">Submit</button>
     </div>
+    {{#if error }}
+        <div class="form-group">
+            <div class="alert alert-danger text-block">
+                {{ error }}
+            </div>
+        </div>
+    {{/if}}
+    {{#if success }}
+        <div class="form-group">
+            <div class="alert alert-success text-block">
+                {{ success }}
+            </div>
+        </div>
+    {{/if}}
 </form>

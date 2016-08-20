@@ -20,26 +20,45 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-    let formData = req.body;
-    let courses = [];
+    let id = sessionStorage.user_id;
     let saveName = req.body.saveName;
-    sessionStorage.schedule_name = saveName;
-    Object.keys(formData).forEach( (formKey) => {
-        let value = formData[formKey];
-        if (formKey === 'saveName') {
-            saveName = value;
-        }else{
-            if(value !== ''){
-                courses.push(value);
-            }
-        }
+    data.course_info.getUserById(id).then((user) => {
+        data.course_info.getScheduleByName(id, saveName).then(schedule => {
+            if (schedule.schedules && schedule.schedules.length !== 0) throw "Schedule of that name already exists";
+            let formData = req.body;
+            let courses = [];
+            let saveName = req.body.saveName;
+            sessionStorage.schedule_name = saveName;
+            Object.keys(formData).forEach( (formKey) => {
+                let value = formData[formKey];
+                if (formKey === 'saveName') {
+                    saveName = value;
+                }else{
+                    if(value !== ''){
+                        courses.push(value);
+                    }
+                }
+            });
+            let path = '/scheduler/schedule?courses=';
+            courses.forEach( (course) => {
+                path = path + course + ',';
+            });
+            path = path.slice(0, -1);//remove that last comma
+            res.redirect(path);
+        }).catch((e) => {
+            res.render('layouts/scheduler_form', {
+                partial: "jquery-scripts",
+                course_entry_amount: 7,
+                user: user,
+                error: e
+            });
+        });
+    }).catch((e) => {
+        res.render('layouts/error', {
+            partial: "jquery-scripts",
+            error: { status: '404', message: e}
+        });
     });
-    let path = '/scheduler/schedule?courses=';
-    courses.forEach( (course) => {
-        path = path + course + ',';
-    });
-    path = path.slice(0, -1);//remove that last comma
-    res.redirect(path);
 });
 
 router.get("/schedule", (req, res) => {
@@ -110,10 +129,10 @@ router.post('/save', (req, res) => {
         res.sendStatus(500).send("User ID not detected in session storage");
     }
     data.course_info.addSchedule(userID, saveData).then(user => {
+        res.redirect('/account');
     }).catch((e) => {
-        console.log(e);
+        res.render('layouts/error', {error: {status: '500', message: e}});
     });
-    res.sendStatus(200);
 });
 
 module.exports = router;
